@@ -1,6 +1,7 @@
 #include "scr_startup.h"
 
 static void view_scr_startup();
+uint16_t settingdata;
 
 view_dynamic_t dyn_view_startup = {
 	{
@@ -34,7 +35,7 @@ void view_scr_startup() {
 	view_render.print("(__)(__)(_)\\_)");
 	view_render.setCursor(AK_LOGO_TEXT, 42);
 	view_render.print("Active Kernel");
-}
+};
 
 void scr_startup_handle(ak_msg_t* msg) {
 	switch (msg->sig) {
@@ -50,6 +51,18 @@ void scr_startup_handle(ak_msg_t* msg) {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
 		SCREEN_TRAN(scr_idle_handle, &scr_idle);
+	}
+		break;
+	case AC_DISPLAY_BUTON_UP_RELEASED: {
+		APP_DBG_SIG("AC_DISPLAY_BUTON_UP_RELEASED\n");
+		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
+		SCREEN_TRAN(view_scr_peashooter, &bitmap_peashooter);
+	}
+		break;
+	case AC_DISPLAY_BUTON_DOWN_RELEASED: {
+		APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
+		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
+		SCREEN_TRAN(view_scr_peashooter, &bitmap_peashooter);
 	}
 		break;
 

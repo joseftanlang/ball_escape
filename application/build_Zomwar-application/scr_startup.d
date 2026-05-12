@@ -156,6 +156,5 @@ build_Zomwar-application/scr_startup.o: \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbtypes.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbportlayer.h \
  sources/app/screens/scr_lhio404_io_device.h \
- sources/app/screens/scr_peashooter.h \
- sources/app/screens/screens_bitmap.h \
- sources/app/screens/screens_bitmap.h
+ sources/app/screens/ball_gamer.h sources/app/screens/screens_bitmap.h \
+ sources/driver/eeprom/eeprom.h sources/app/screens/screens_bitmap.h

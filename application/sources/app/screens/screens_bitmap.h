@@ -5,5 +5,5 @@
 
 // scr_peashooter
 extern const unsigned char PROGMEM bitmap_peashooter [];
-
+extern const unsigned char PROGMEM bitmap_ball [],
 #endif //__SCREENS_BITMAP_H__

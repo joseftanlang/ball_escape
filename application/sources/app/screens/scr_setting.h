@@ -1,5 +1,5 @@
-#ifndef __SCR_STARTUP_H__
-#define __SCR_STARTUP_H__
+#ifndef __SCR_SETTING_H__
+#define __SCR_SETTING_H__
 
 #include "fsm.h"
 #include "port.h"
@@ -16,13 +16,13 @@
 #include "view_render.h"
 
 #include "buzzer.h"
-#include "eeprom.h"
 
+#include "eeprom.h"
+#include "app_eeprom.h"
+
+#include "screens.h"
 #include "screens_bitmap.h"
 
-extern view_dynamic_t dyn_view_startup;
+//code form here
 
-extern view_screen_t scr_startup;
-extern void scr_startup_handle(ak_msg_t* msg);
-
-#endif //__SCR_STARTUP_H__
+#endif //__SCR_SETTING_H__
