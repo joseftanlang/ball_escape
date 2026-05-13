@@ -5555,7 +5555,7 @@ LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-n
 LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/lib/thumb/v7-m/nofp/libg.a
 LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a
 
-.debug_info     0x0000000000000000    0x83b12
+.debug_info     0x0000000000000000    0x83b14
  .debug_info    0x0000000000000000      0x226 build_Zomwar-application/fsm.o
  .debug_info    0x0000000000000226     0x113d build_Zomwar-application/task.o
  .debug_info    0x0000000000001363      0xb0c build_Zomwar-application/timer.o
@@ -5609,45 +5609,45 @@ LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-n
  .debug_info    0x000000000002df2c     0x289c build_Zomwar-application/scr_startup.o
  .debug_info    0x00000000000307c8     0x2616 build_Zomwar-application/scr_peashooter.o
  .debug_info    0x0000000000032dde     0x20dd build_Zomwar-application/screens_bitmap.o
- .debug_info    0x0000000000034ebb     0x75ae build_Zomwar-application/ball_escape.o
- .debug_info    0x000000000003c469     0x2808 build_Zomwar-application/scr_score.o
- .debug_info    0x000000000003ec71      0xdc9 build_Zomwar-application/task_system.o
- .debug_info    0x000000000003fa3a     0x8558 build_Zomwar-application/app.o
- .debug_info    0x0000000000047f92      0xa8b build_Zomwar-application/app_data.o
- .debug_info    0x0000000000048a1d     0x1149 build_Zomwar-application/app_eeprom.o
- .debug_info    0x0000000000049b66      0xa97 build_Zomwar-application/app_non_clear_ram.o
- .debug_info    0x000000000004a5fd      0xde4 build_Zomwar-application/app_bsp.o
- .debug_info    0x000000000004b3e1      0xfac build_Zomwar-application/app_modbus_pull.o
- .debug_info    0x000000000004c38d     0x45da build_Zomwar-application/shell.o
- .debug_info    0x0000000000050967      0xeeb build_Zomwar-application/task_shell.o
- .debug_info    0x0000000000051852      0xcb0 build_Zomwar-application/task_life.o
- .debug_info    0x0000000000052502     0x18d2 build_Zomwar-application/task_fw.o
- .debug_info    0x0000000000053dd4      0xa49 build_Zomwar-application/task_list.o
- .debug_info    0x000000000005481d     0x24c6 build_Zomwar-application/task_display.o
- .debug_info    0x0000000000056ce3      0xe35 build_Zomwar-application/task_if.o
- .debug_info    0x0000000000057b18      0xba0 build_Zomwar-application/task_rf24_if.o
- .debug_info    0x00000000000586b8      0xe3f build_Zomwar-application/task_uart_if.o
- .debug_info    0x00000000000594f7      0xba0 build_Zomwar-application/task_dbg.o
- .debug_info    0x000000000005a097     0x260a build_Zomwar-application/view_render.o
- .debug_info    0x000000000005c6a1     0x23ad build_Zomwar-application/screen_manager.o
- .debug_info    0x000000000005ea4e     0x4796 build_Zomwar-application/Adafruit_GFX.o
- .debug_info    0x00000000000631e4     0x30ef build_Zomwar-application/Adafruit_oled_drv.o
- .debug_info    0x00000000000662d3      0xbf6 build_Zomwar-application/eeprom.o
- .debug_info    0x0000000000066ec9      0xbfc build_Zomwar-application/link_hal.o
- .debug_info    0x0000000000067ac5     0x16df build_Zomwar-application/link.o
- .debug_info    0x00000000000691a4     0x1a10 build_Zomwar-application/link_mac.o
- .debug_info    0x000000000006abb4     0x17a3 build_Zomwar-application/link_phy.o
- .debug_info    0x000000000006c357      0xf3e build_Zomwar-application/link_data.o
- .debug_info    0x000000000006d295     0x22f1 build_Zomwar-application/wiring_digital.o
- .debug_info    0x000000000006f586     0x36c7 build_Zomwar-application/Print.o
- .debug_info    0x0000000000072c4d     0x3b59 build_Zomwar-application/HardwareSerial.o
- .debug_info    0x00000000000767a6     0x3b89 build_Zomwar-application/HardwareSerial2.o
- .debug_info    0x000000000007a32f      0xfb7 build_Zomwar-application/SPI.o
- .debug_info    0x000000000007b2e6     0x46e6 build_Zomwar-application/Wire.o
- .debug_info    0x000000000007f9cc     0x2b50 build_Zomwar-application/twi.o
- .debug_info    0x000000000008251c     0x15f6 build_Zomwar-application/mini_cpp.o
+ .debug_info    0x0000000000034ebb     0x75b0 build_Zomwar-application/ball_escape.o
+ .debug_info    0x000000000003c46b     0x2808 build_Zomwar-application/scr_score.o
+ .debug_info    0x000000000003ec73      0xdc9 build_Zomwar-application/task_system.o
+ .debug_info    0x000000000003fa3c     0x8558 build_Zomwar-application/app.o
+ .debug_info    0x0000000000047f94      0xa8b build_Zomwar-application/app_data.o
+ .debug_info    0x0000000000048a1f     0x1149 build_Zomwar-application/app_eeprom.o
+ .debug_info    0x0000000000049b68      0xa97 build_Zomwar-application/app_non_clear_ram.o
+ .debug_info    0x000000000004a5ff      0xde4 build_Zomwar-application/app_bsp.o
+ .debug_info    0x000000000004b3e3      0xfac build_Zomwar-application/app_modbus_pull.o
+ .debug_info    0x000000000004c38f     0x45da build_Zomwar-application/shell.o
+ .debug_info    0x0000000000050969      0xeeb build_Zomwar-application/task_shell.o
+ .debug_info    0x0000000000051854      0xcb0 build_Zomwar-application/task_life.o
+ .debug_info    0x0000000000052504     0x18d2 build_Zomwar-application/task_fw.o
+ .debug_info    0x0000000000053dd6      0xa49 build_Zomwar-application/task_list.o
+ .debug_info    0x000000000005481f     0x24c6 build_Zomwar-application/task_display.o
+ .debug_info    0x0000000000056ce5      0xe35 build_Zomwar-application/task_if.o
+ .debug_info    0x0000000000057b1a      0xba0 build_Zomwar-application/task_rf24_if.o
+ .debug_info    0x00000000000586ba      0xe3f build_Zomwar-application/task_uart_if.o
+ .debug_info    0x00000000000594f9      0xba0 build_Zomwar-application/task_dbg.o
+ .debug_info    0x000000000005a099     0x260a build_Zomwar-application/view_render.o
+ .debug_info    0x000000000005c6a3     0x23ad build_Zomwar-application/screen_manager.o
+ .debug_info    0x000000000005ea50     0x4796 build_Zomwar-application/Adafruit_GFX.o
+ .debug_info    0x00000000000631e6     0x30ef build_Zomwar-application/Adafruit_oled_drv.o
+ .debug_info    0x00000000000662d5      0xbf6 build_Zomwar-application/eeprom.o
+ .debug_info    0x0000000000066ecb      0xbfc build_Zomwar-application/link_hal.o
+ .debug_info    0x0000000000067ac7     0x16df build_Zomwar-application/link.o
+ .debug_info    0x00000000000691a6     0x1a10 build_Zomwar-application/link_mac.o
+ .debug_info    0x000000000006abb6     0x17a3 build_Zomwar-application/link_phy.o
+ .debug_info    0x000000000006c359      0xf3e build_Zomwar-application/link_data.o
+ .debug_info    0x000000000006d297     0x22f1 build_Zomwar-application/wiring_digital.o
+ .debug_info    0x000000000006f588     0x36c7 build_Zomwar-application/Print.o
+ .debug_info    0x0000000000072c4f     0x3b59 build_Zomwar-application/HardwareSerial.o
+ .debug_info    0x00000000000767a8     0x3b89 build_Zomwar-application/HardwareSerial2.o
+ .debug_info    0x000000000007a331      0xfb7 build_Zomwar-application/SPI.o
+ .debug_info    0x000000000007b2e8     0x46e6 build_Zomwar-application/Wire.o
+ .debug_info    0x000000000007f9ce     0x2b50 build_Zomwar-application/twi.o
+ .debug_info    0x000000000008251e     0x15f6 build_Zomwar-application/mini_cpp.o
 
-.debug_abbrev   0x0000000000000000    0x11e9f
+.debug_abbrev   0x0000000000000000    0x11eaf
  .debug_abbrev  0x0000000000000000       0xdc build_Zomwar-application/fsm.o
  .debug_abbrev  0x00000000000000dc      0x3c6 build_Zomwar-application/task.o
  .debug_abbrev  0x00000000000004a2      0x324 build_Zomwar-application/timer.o
@@ -5701,43 +5701,43 @@ LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-n
  .debug_abbrev  0x0000000000007d24      0x4a9 build_Zomwar-application/scr_startup.o
  .debug_abbrev  0x00000000000081cd      0x44d build_Zomwar-application/scr_peashooter.o
  .debug_abbrev  0x000000000000861a      0x253 build_Zomwar-application/screens_bitmap.o
- .debug_abbrev  0x000000000000886d      0xbd1 build_Zomwar-application/ball_escape.o
- .debug_abbrev  0x000000000000943e      0x49f build_Zomwar-application/scr_score.o
- .debug_abbrev  0x00000000000098dd      0x25d build_Zomwar-application/task_system.o
- .debug_abbrev  0x0000000000009b3a      0x8b2 build_Zomwar-application/app.o
- .debug_abbrev  0x000000000000a3ec      0x1cd build_Zomwar-application/app_data.o
- .debug_abbrev  0x000000000000a5b9      0x39a build_Zomwar-application/app_eeprom.o
- .debug_abbrev  0x000000000000a953      0x1cd build_Zomwar-application/app_non_clear_ram.o
- .debug_abbrev  0x000000000000ab20      0x287 build_Zomwar-application/app_bsp.o
- .debug_abbrev  0x000000000000ada7      0x32e build_Zomwar-application/app_modbus_pull.o
- .debug_abbrev  0x000000000000b0d5      0x55d build_Zomwar-application/shell.o
- .debug_abbrev  0x000000000000b632      0x2dd build_Zomwar-application/task_shell.o
- .debug_abbrev  0x000000000000b90f      0x266 build_Zomwar-application/task_life.o
- .debug_abbrev  0x000000000000bb75      0x364 build_Zomwar-application/task_fw.o
- .debug_abbrev  0x000000000000bed9      0x1e6 build_Zomwar-application/task_list.o
- .debug_abbrev  0x000000000000c0bf      0x412 build_Zomwar-application/task_display.o
- .debug_abbrev  0x000000000000c4d1      0x2b2 build_Zomwar-application/task_if.o
- .debug_abbrev  0x000000000000c783      0x1eb build_Zomwar-application/task_rf24_if.o
- .debug_abbrev  0x000000000000c96e      0x26c build_Zomwar-application/task_uart_if.o
- .debug_abbrev  0x000000000000cbda      0x1eb build_Zomwar-application/task_dbg.o
- .debug_abbrev  0x000000000000cdc5      0x3e4 build_Zomwar-application/view_render.o
- .debug_abbrev  0x000000000000d1a9      0x339 build_Zomwar-application/screen_manager.o
- .debug_abbrev  0x000000000000d4e2      0x7bc build_Zomwar-application/Adafruit_GFX.o
- .debug_abbrev  0x000000000000dc9e      0x52d build_Zomwar-application/Adafruit_oled_drv.o
- .debug_abbrev  0x000000000000e1cb      0x220 build_Zomwar-application/eeprom.o
- .debug_abbrev  0x000000000000e3eb      0x264 build_Zomwar-application/link_hal.o
- .debug_abbrev  0x000000000000e64f      0x3c1 build_Zomwar-application/link.o
- .debug_abbrev  0x000000000000ea10      0x4b1 build_Zomwar-application/link_mac.o
- .debug_abbrev  0x000000000000eec1      0x5bc build_Zomwar-application/link_phy.o
- .debug_abbrev  0x000000000000f47d      0x304 build_Zomwar-application/link_data.o
- .debug_abbrev  0x000000000000f781      0x2dc build_Zomwar-application/wiring_digital.o
- .debug_abbrev  0x000000000000fa5d      0x548 build_Zomwar-application/Print.o
- .debug_abbrev  0x000000000000ffa5      0x54f build_Zomwar-application/HardwareSerial.o
- .debug_abbrev  0x00000000000104f4      0x5d7 build_Zomwar-application/HardwareSerial2.o
- .debug_abbrev  0x0000000000010acb      0x39f build_Zomwar-application/SPI.o
- .debug_abbrev  0x0000000000010e6a      0x769 build_Zomwar-application/Wire.o
- .debug_abbrev  0x00000000000115d3      0x46b build_Zomwar-application/twi.o
- .debug_abbrev  0x0000000000011a3e      0x461 build_Zomwar-application/mini_cpp.o
+ .debug_abbrev  0x000000000000886d      0xbe1 build_Zomwar-application/ball_escape.o
+ .debug_abbrev  0x000000000000944e      0x49f build_Zomwar-application/scr_score.o
+ .debug_abbrev  0x00000000000098ed      0x25d build_Zomwar-application/task_system.o
+ .debug_abbrev  0x0000000000009b4a      0x8b2 build_Zomwar-application/app.o
+ .debug_abbrev  0x000000000000a3fc      0x1cd build_Zomwar-application/app_data.o
+ .debug_abbrev  0x000000000000a5c9      0x39a build_Zomwar-application/app_eeprom.o
+ .debug_abbrev  0x000000000000a963      0x1cd build_Zomwar-application/app_non_clear_ram.o
+ .debug_abbrev  0x000000000000ab30      0x287 build_Zomwar-application/app_bsp.o
+ .debug_abbrev  0x000000000000adb7      0x32e build_Zomwar-application/app_modbus_pull.o
+ .debug_abbrev  0x000000000000b0e5      0x55d build_Zomwar-application/shell.o
+ .debug_abbrev  0x000000000000b642      0x2dd build_Zomwar-application/task_shell.o
+ .debug_abbrev  0x000000000000b91f      0x266 build_Zomwar-application/task_life.o
+ .debug_abbrev  0x000000000000bb85      0x364 build_Zomwar-application/task_fw.o
+ .debug_abbrev  0x000000000000bee9      0x1e6 build_Zomwar-application/task_list.o
+ .debug_abbrev  0x000000000000c0cf      0x412 build_Zomwar-application/task_display.o
+ .debug_abbrev  0x000000000000c4e1      0x2b2 build_Zomwar-application/task_if.o
+ .debug_abbrev  0x000000000000c793      0x1eb build_Zomwar-application/task_rf24_if.o
+ .debug_abbrev  0x000000000000c97e      0x26c build_Zomwar-application/task_uart_if.o
+ .debug_abbrev  0x000000000000cbea      0x1eb build_Zomwar-application/task_dbg.o
+ .debug_abbrev  0x000000000000cdd5      0x3e4 build_Zomwar-application/view_render.o
+ .debug_abbrev  0x000000000000d1b9      0x339 build_Zomwar-application/screen_manager.o
+ .debug_abbrev  0x000000000000d4f2      0x7bc build_Zomwar-application/Adafruit_GFX.o
+ .debug_abbrev  0x000000000000dcae      0x52d build_Zomwar-application/Adafruit_oled_drv.o
+ .debug_abbrev  0x000000000000e1db      0x220 build_Zomwar-application/eeprom.o
+ .debug_abbrev  0x000000000000e3fb      0x264 build_Zomwar-application/link_hal.o
+ .debug_abbrev  0x000000000000e65f      0x3c1 build_Zomwar-application/link.o
+ .debug_abbrev  0x000000000000ea20      0x4b1 build_Zomwar-application/link_mac.o
+ .debug_abbrev  0x000000000000eed1      0x5bc build_Zomwar-application/link_phy.o
+ .debug_abbrev  0x000000000000f48d      0x304 build_Zomwar-application/link_data.o
+ .debug_abbrev  0x000000000000f791      0x2dc build_Zomwar-application/wiring_digital.o
+ .debug_abbrev  0x000000000000fa6d      0x548 build_Zomwar-application/Print.o
+ .debug_abbrev  0x000000000000ffb5      0x54f build_Zomwar-application/HardwareSerial.o
+ .debug_abbrev  0x0000000000010504      0x5d7 build_Zomwar-application/HardwareSerial2.o
+ .debug_abbrev  0x0000000000010adb      0x39f build_Zomwar-application/SPI.o
+ .debug_abbrev  0x0000000000010e7a      0x769 build_Zomwar-application/Wire.o
+ .debug_abbrev  0x00000000000115e3      0x46b build_Zomwar-application/twi.o
+ .debug_abbrev  0x0000000000011a4e      0x461 build_Zomwar-application/mini_cpp.o
 
 .debug_loc      0x0000000000000000    0x1cc3c
  .debug_loc     0x0000000000000000       0x4a build_Zomwar-application/fsm.o
@@ -6093,7 +6093,7 @@ LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-n
  .debug_ranges  0x0000000000003998       0x58 build_Zomwar-application/twi.o
  .debug_ranges  0x00000000000039f0       0x50 build_Zomwar-application/mini_cpp.o
 
-.debug_line     0x0000000000000000    0x2bdaa
+.debug_line     0x0000000000000000    0x2bdac
  .debug_line    0x0000000000000000      0x18c build_Zomwar-application/fsm.o
  .debug_line    0x000000000000018c      0xa11 build_Zomwar-application/task.o
  .debug_line    0x0000000000000b9d      0x5bd build_Zomwar-application/timer.o
@@ -6147,43 +6147,43 @@ LOAD /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-n
  .debug_line    0x0000000000016b56      0x7b4 build_Zomwar-application/scr_startup.o
  .debug_line    0x000000000001730a      0x695 build_Zomwar-application/scr_peashooter.o
  .debug_line    0x000000000001799f      0x4bb build_Zomwar-application/screens_bitmap.o
- .debug_line    0x0000000000017e5a     0x1480 build_Zomwar-application/ball_escape.o
- .debug_line    0x00000000000192da      0x7a9 build_Zomwar-application/scr_score.o
- .debug_line    0x0000000000019a83      0x561 build_Zomwar-application/task_system.o
- .debug_line    0x0000000000019fe4     0x12fe build_Zomwar-application/app.o
- .debug_line    0x000000000001b2e2      0x4d2 build_Zomwar-application/app_data.o
- .debug_line    0x000000000001b7b4      0x78a build_Zomwar-application/app_eeprom.o
- .debug_line    0x000000000001bf3e      0x49c build_Zomwar-application/app_non_clear_ram.o
- .debug_line    0x000000000001c3da      0x614 build_Zomwar-application/app_bsp.o
- .debug_line    0x000000000001c9ee      0x68a build_Zomwar-application/app_modbus_pull.o
- .debug_line    0x000000000001d078     0x1459 build_Zomwar-application/shell.o
- .debug_line    0x000000000001e4d1      0x617 build_Zomwar-application/task_shell.o
- .debug_line    0x000000000001eae8      0x537 build_Zomwar-application/task_life.o
- .debug_line    0x000000000001f01f      0xaee build_Zomwar-application/task_fw.o
- .debug_line    0x000000000001fb0d      0x490 build_Zomwar-application/task_list.o
- .debug_line    0x000000000001ff9d      0x5f2 build_Zomwar-application/task_display.o
- .debug_line    0x000000000002058f      0x5f2 build_Zomwar-application/task_if.o
- .debug_line    0x0000000000020b81      0x4bc build_Zomwar-application/task_rf24_if.o
- .debug_line    0x000000000002103d      0x612 build_Zomwar-application/task_uart_if.o
- .debug_line    0x000000000002164f      0x4b6 build_Zomwar-application/task_dbg.o
- .debug_line    0x0000000000021b05      0x77b build_Zomwar-application/view_render.o
- .debug_line    0x0000000000022280      0x66b build_Zomwar-application/screen_manager.o
- .debug_line    0x00000000000228eb     0x145b build_Zomwar-application/Adafruit_GFX.o
- .debug_line    0x0000000000023d46      0xb08 build_Zomwar-application/Adafruit_oled_drv.o
- .debug_line    0x000000000002484e      0x4ed build_Zomwar-application/eeprom.o
- .debug_line    0x0000000000024d3b      0x588 build_Zomwar-application/link_hal.o
- .debug_line    0x00000000000252c3      0x982 build_Zomwar-application/link.o
- .debug_line    0x0000000000025c45      0xbbe build_Zomwar-application/link_mac.o
- .debug_line    0x0000000000026803      0xd0e build_Zomwar-application/link_phy.o
- .debug_line    0x0000000000027511      0x7d8 build_Zomwar-application/link_data.o
- .debug_line    0x0000000000027ce9      0x6db build_Zomwar-application/wiring_digital.o
- .debug_line    0x00000000000283c4      0xad1 build_Zomwar-application/Print.o
- .debug_line    0x0000000000028e95      0x700 build_Zomwar-application/HardwareSerial.o
- .debug_line    0x0000000000029595      0x6b2 build_Zomwar-application/HardwareSerial2.o
- .debug_line    0x0000000000029c47      0x7b1 build_Zomwar-application/SPI.o
- .debug_line    0x000000000002a3f8      0xa76 build_Zomwar-application/Wire.o
- .debug_line    0x000000000002ae6e      0x8df build_Zomwar-application/twi.o
- .debug_line    0x000000000002b74d      0x65d build_Zomwar-application/mini_cpp.o
+ .debug_line    0x0000000000017e5a     0x1482 build_Zomwar-application/ball_escape.o
+ .debug_line    0x00000000000192dc      0x7a9 build_Zomwar-application/scr_score.o
+ .debug_line    0x0000000000019a85      0x561 build_Zomwar-application/task_system.o
+ .debug_line    0x0000000000019fe6     0x12fe build_Zomwar-application/app.o
+ .debug_line    0x000000000001b2e4      0x4d2 build_Zomwar-application/app_data.o
+ .debug_line    0x000000000001b7b6      0x78a build_Zomwar-application/app_eeprom.o
+ .debug_line    0x000000000001bf40      0x49c build_Zomwar-application/app_non_clear_ram.o
+ .debug_line    0x000000000001c3dc      0x614 build_Zomwar-application/app_bsp.o
+ .debug_line    0x000000000001c9f0      0x68a build_Zomwar-application/app_modbus_pull.o
+ .debug_line    0x000000000001d07a     0x1459 build_Zomwar-application/shell.o
+ .debug_line    0x000000000001e4d3      0x617 build_Zomwar-application/task_shell.o
+ .debug_line    0x000000000001eaea      0x537 build_Zomwar-application/task_life.o
+ .debug_line    0x000000000001f021      0xaee build_Zomwar-application/task_fw.o
+ .debug_line    0x000000000001fb0f      0x490 build_Zomwar-application/task_list.o
+ .debug_line    0x000000000001ff9f      0x5f2 build_Zomwar-application/task_display.o
+ .debug_line    0x0000000000020591      0x5f2 build_Zomwar-application/task_if.o
+ .debug_line    0x0000000000020b83      0x4bc build_Zomwar-application/task_rf24_if.o
+ .debug_line    0x000000000002103f      0x612 build_Zomwar-application/task_uart_if.o
+ .debug_line    0x0000000000021651      0x4b6 build_Zomwar-application/task_dbg.o
+ .debug_line    0x0000000000021b07      0x77b build_Zomwar-application/view_render.o
+ .debug_line    0x0000000000022282      0x66b build_Zomwar-application/screen_manager.o
+ .debug_line    0x00000000000228ed     0x145b build_Zomwar-application/Adafruit_GFX.o
+ .debug_line    0x0000000000023d48      0xb08 build_Zomwar-application/Adafruit_oled_drv.o
+ .debug_line    0x0000000000024850      0x4ed build_Zomwar-application/eeprom.o
+ .debug_line    0x0000000000024d3d      0x588 build_Zomwar-application/link_hal.o
+ .debug_line    0x00000000000252c5      0x982 build_Zomwar-application/link.o
+ .debug_line    0x0000000000025c47      0xbbe build_Zomwar-application/link_mac.o
+ .debug_line    0x0000000000026805      0xd0e build_Zomwar-application/link_phy.o
+ .debug_line    0x0000000000027513      0x7d8 build_Zomwar-application/link_data.o
+ .debug_line    0x0000000000027ceb      0x6db build_Zomwar-application/wiring_digital.o
+ .debug_line    0x00000000000283c6      0xad1 build_Zomwar-application/Print.o
+ .debug_line    0x0000000000028e97      0x700 build_Zomwar-application/HardwareSerial.o
+ .debug_line    0x0000000000029597      0x6b2 build_Zomwar-application/HardwareSerial2.o
+ .debug_line    0x0000000000029c49      0x7b1 build_Zomwar-application/SPI.o
+ .debug_line    0x000000000002a3fa      0xa76 build_Zomwar-application/Wire.o
+ .debug_line    0x000000000002ae70      0x8df build_Zomwar-application/twi.o
+ .debug_line    0x000000000002b74f      0x65d build_Zomwar-application/mini_cpp.o
 
 .debug_str      0x0000000000000000    0x1b607
  .debug_str     0x0000000000000000      0x1bc build_Zomwar-application/fsm.o

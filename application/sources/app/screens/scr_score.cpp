@@ -36,13 +36,13 @@ void view_scr_charts_game() {
 	// Draw score text
 	view_render.setTextSize(2);
 	view_render.setTextColor(BLACK);
-	view_render.setCursor(28, 18);
+	view_render.setCursor(22, 18);
     // view_render.print("2nd");
 	view_render.print(gamescore_charts.score_2nd);
-	view_render.setCursor(58, 7);
+	view_render.setCursor(52, 7);
     // view_render.print("1st");
 	view_render.print(gamescore_charts.score_1st);
-	view_render.setCursor(91, 23);
+	view_render.setCursor(88, 23);
     // view_render.print("3rd");
 	view_render.print(gamescore_charts.score_3rd);
 }
