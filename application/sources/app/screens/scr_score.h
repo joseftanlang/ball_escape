@@ -1,5 +1,5 @@
-#ifndef __SCR_SCORE_H__
-#define __SCR_SCORE_H__
+#ifndef __SCR_CHARTS_GAME_H__
+#define __SCR_CHARTS_GAME_H__
 
 #include "fsm.h"
 #include "port.h"
@@ -20,11 +20,11 @@
 #include "eeprom.h"
 #include "app_eeprom.h"
 
-#include "screens.h"
+// #include "screens.h"
 #include "screens_bitmap.h"
 
 extern view_dynamic_t dyn_view_item_charts_game;
 extern view_screen_t scr_charts_game;
 extern void scr_charts_game_handle(ak_msg_t* msg);
 
-#endif //__SCR_SCORE_H__
+#endif //__SCR_CHARTS_GAME_H__

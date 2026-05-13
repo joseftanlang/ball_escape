@@ -1,0 +1,6 @@
+sources/app/app_eeprom.cpp:42:6:void ar_game_score_set_default(ar_game_score_t*)	0	static
+sources/app/app_eeprom.cpp:49:6:bool ar_game_score_read(ar_game_score_t*)	32	static
+sources/app/app_eeprom.cpp:63:6:bool ar_game_score_write(ar_game_score_t*)	32	static
+sources/app/app_eeprom.cpp:72:6:void ar_game_setting_set_default(ar_game_setting_t*)	0	static
+sources/app/app_eeprom.cpp:80:6:bool ar_game_setting_read(ar_game_setting_t*)	24	static
+sources/app/app_eeprom.cpp:94:6:bool ar_game_setting_write(ar_game_setting_t*)	24	static

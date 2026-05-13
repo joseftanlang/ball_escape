@@ -1,0 +1,13 @@
+sources/app/screens/ball_escape.cpp:58:12:int normalize_angle(int)	0	static
+sources/app/screens/ball_escape.cpp:126:13:void scoring_system()	0	static
+sources/app/screens/ball_escape.cpp:74:13:bool angle_in_gap(int, int, int)	8	static
+sources/app/screens/ball_escape.cpp:147:13:bool circle_hit_by_ball(const circle_state&)	0	static
+/home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc:426:7:) [with _Args = {const circle_state&}; _Tp = circle_state; _Alloc = std::allocator<circle_state>]	40	static
+sources/app/screens/ball_escape.cpp:95:13:void spawn_circle()	16	static
+/home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc:171:5:std::vector<_Tp, _Alloc>::iterator std::vector<_Tp, _Alloc>::_M_erase(std::vector<_Tp, _Alloc>::iterator) [with _Tp = circle_state; _Alloc = std::allocator<circle_state>]	8	static
+sources/app/screens/ball_escape.cpp:198:13:void update_ball_motion()	48	static
+sources/app/screens/ball_escape.cpp:371:1:cpp)	0	static
+sources/app/screens/ball_escape.cpp:371:1:cpp)	0	static
+sources/app/screens/ball_escape.cpp:295:6:void arc(int, int, int, int, int)	88	static
+sources/app/screens/ball_escape.cpp:262:6:void view_circle_escape()	64	static
+sources/app/screens/ball_escape.cpp:318:6:void scr_circle_escape_handle(ak_msg_t*)	8	static

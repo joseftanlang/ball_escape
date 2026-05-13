@@ -9,6 +9,7 @@ VPATH += sources/app
 SOURCES_CPP += sources/app/task_system.cpp
 SOURCES_CPP += sources/app/app.cpp
 SOURCES_CPP += sources/app/app_data.cpp
+SOURCES_CPP += sources/app/app_eeprom.cpp
 SOURCES_CPP += sources/app/app_non_clear_ram.cpp
 SOURCES_CPP += sources/app/app_bsp.cpp
 SOURCES_CPP += sources/app/app_modbus_pull.cpp

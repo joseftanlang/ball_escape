@@ -16,7 +16,8 @@
 #include "view_render.h"
 
 #include "buzzer.h"
-#include "eeprom.h"
+
+#include "ball_escape.h"
 
 #include "screens_bitmap.h"
 
