@@ -54,7 +54,7 @@ void scr_charts_game_handle(ak_msg_t* msg) {
         APP_DBG_SIG("SCREEN ENTRY");
         ar_game_score_read(&gamescore_charts);
         view_scr_charts_game();
-        BUZZER_PlayTones(tones_3beep);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
         break;
     case AC_DISPLAY_BUTON_DOWN_RELEASED:
 		SCREEN_TRAN(scr_circle_escape_handle, &scr_circle_escape);
@@ -66,11 +66,12 @@ void scr_charts_game_handle(ak_msg_t* msg) {
 		gamescore_charts.score_2nd = 0;
 		gamescore_charts.score_3rd = 0;
 		ar_game_score_write(&gamescore_charts);
-		// BUZZER_PlaySound(BUZZER_SOUND_CLICK);
+		BUZZER_PlaySound(BUZZER_SOUND_BANG);
         break;
     case AC_DISPLAY_BUTON_MODE_RELEASED:
         APP_DBG_SIG("AC_DISPLAY_BUTTON_MODE_LONG_PRESSED\n");
         SCREEN_TRAN(scr_info_handle, &scr_info);
+		BUZZER_PlaySound(BUZZER_SOUND_BANG);
         break;
     default:
         break;

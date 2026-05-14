@@ -381,6 +381,7 @@ void scr_circle_escape_handle(ak_msg_t *msg)
         APP_DBG_SIG("SCREEN_ENTRY\n");
         view_render.initialize();
         view_render_display_on();
+        BUZZER_PlaySound(BUZZER_SOUND_LETS_GO);
         timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_BALL_ESCAPE_UPDATE, AC_DISPLAY_SHOW_BALL_ESCAPE_UPDATE_INTERVAL, TIMER_PERIODIC);
         circle_rotation_deg = CIRCLE_START_ROTATION_DEG;
         game_tick_count = 0;
@@ -404,6 +405,7 @@ void scr_circle_escape_handle(ak_msg_t *msg)
     {
         APP_DBG_SIG("AC_DISPLAY_BUTON_UP_RELEASED\n");
         update_circle_rotation(-CIRCLE_ROTATE_STEP_DEG);
+        BUZZER_PlaySound(BUZZER_SOUND_BANG);
     }
     break;
 
@@ -411,6 +413,7 @@ void scr_circle_escape_handle(ak_msg_t *msg)
     {
         APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
         update_circle_rotation(CIRCLE_ROTATE_STEP_DEG);
+        BUZZER_PlaySound(BUZZER_SOUND_BANG);
     }
     break;
 
@@ -419,6 +422,7 @@ void scr_circle_escape_handle(ak_msg_t *msg)
         APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
         timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_BALL_ESCAPE_UPDATE);
         SCREEN_TRAN(scr_info_handle, &scr_info);
+        BUZZER_PlaySound(BUZZER_SOUND_GOODBYE);
     }
     break;
 

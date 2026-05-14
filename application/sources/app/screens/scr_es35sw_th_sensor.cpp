@@ -132,6 +132,7 @@ void scr_es35sw_th_sensor_handle(ak_msg_t* msg) {
 	case AC_DISPLAY_SHOW_MODBUS_PULL_SLEEP: {
 		APP_DBG_SIG("AC_DISPLAY_SHOW_MODBUS_PULL_SLEEP\n");
 		SCREEN_TRAN(scr_idle_handle, &scr_idle);
+		BUZZER_PlaySound(BUZZER_SOUND_USB_DISCONNECTED);
 	}
 		break;
 
@@ -139,12 +140,13 @@ void scr_es35sw_th_sensor_handle(ak_msg_t* msg) {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_MODBUS_PULL_UPDATE);
 		SCREEN_TRAN(scr_peashooter_handle, &scr_peashooter);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 		break;
 
 	case AC_DISPLAY_BUTON_UP_RELEASED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_UP_RELEASED\n");
-		BUZZER_PlayTones(tones_3beep);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 		break;
 
@@ -152,6 +154,7 @@ void scr_es35sw_th_sensor_handle(ak_msg_t* msg) {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_MODBUS_PULL_UPDATE);
 		SCREEN_TRAN(scr_lhio404_io_device_handle, &scr_lhio404_io_device);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 		break;
 

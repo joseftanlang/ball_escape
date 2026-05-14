@@ -95,11 +95,13 @@ void view_scr_lhio404_io_device()
 		{
 			view_render.setCursor(10 + 32 * boxIdx, 40);
 			view_render.print("ON");
+			BUZZER_PlaySound(BUZZER_SOUND_USB_CONNECTED);
 		}
 		else
 		{
 			view_render.setCursor(8 + 32 * boxIdx, 40);
 			view_render.print("OFF");
+			BUZZER_PlaySound(BUZZER_SOUND_USB_DISCONNECTED);
 		}
 	}
 
@@ -173,6 +175,7 @@ void scr_lhio404_io_device_handle(ak_msg_t *msg)
 	{
 		APP_DBG_SIG("AC_DISPLAY_BUTON_UP_RELEASED\n");
 		scr_lhio404_io_device_move_focus(1);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 	break;
 
@@ -180,6 +183,7 @@ void scr_lhio404_io_device_handle(ak_msg_t *msg)
 	{
 		APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
 		scr_lhio404_io_device_move_focus(-1);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 	break;
 
@@ -188,6 +192,7 @@ void scr_lhio404_io_device_handle(ak_msg_t *msg)
 		APP_DBG_SIG("AC_DISPLAY_BUTON_LONG_MODE_PRESSED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE);
 		SCREEN_TRAN(scr_es35sw_th_sensor_handle, &scr_es35sw_th_sensor);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 	break;
 

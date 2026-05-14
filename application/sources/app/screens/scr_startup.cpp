@@ -18,22 +18,33 @@ view_screen_t scr_startup = {
 };
 
 void view_scr_startup() {
-#define AK_LOGO_AXIS_X		(23)
-#define AK_LOGO_TEXT		(AK_LOGO_AXIS_X + 4)
-	/* ak logo */
+// #define AK_LOGO_AXIS_X		(23)
+// #define AK_LOGO_TEXT		(AK_LOGO_AXIS_X + 4)
+// 	/* ak logo */
+// 	view_render.clear();
+// 	view_render.setTextSize(1);
+// 	view_render.setTextColor(WHITE);
+// 	view_render.setCursor(AK_LOGO_AXIS_X, 3);
+// 	view_render.print("   __    _  _ ");
+// 	view_render.setCursor(AK_LOGO_AXIS_X, 10);
+// 	view_render.print("  /__\\  ( )/ )");
+// 	view_render.setCursor(AK_LOGO_AXIS_X, 20);
+// 	view_render.print(" /(__)\\ (   (");
+// 	view_render.setCursor(AK_LOGO_AXIS_X, 30);
+// 	view_render.print("(__)(__)(_)\\_)");
+// 	view_render.setCursor(AK_LOGO_TEXT, 42);
+// 	view_render.print("Active Kernel");
+
 	view_render.clear();
+	view_render.drawBitmap(0,0,bitmap_vietnam_flag_b,128,64,WHITE);
+	// view_render.drawBitmap(0,0,bitmap_vietnam_flag_w,128,64,BLACK);
+
+	view_render.setCursor(0, 54);
 	view_render.setTextSize(1);
-	view_render.setTextColor(WHITE);
-	view_render.setCursor(AK_LOGO_AXIS_X, 3);
-	view_render.print("   __    _  _ ");
-	view_render.setCursor(AK_LOGO_AXIS_X, 10);
-	view_render.print("  /__\\  ( )/ )");
-	view_render.setCursor(AK_LOGO_AXIS_X, 20);
-	view_render.print(" /(__)\\ (   (");
-	view_render.setCursor(AK_LOGO_AXIS_X, 30);
-	view_render.print("(__)(__)(_)\\_)");
-	view_render.setCursor(AK_LOGO_TEXT, 42);
-	view_render.print("Active Kernel");
+	view_render.setTextColor(BLACK);
+	view_render.print("Vietnam Anthem");
+
+	BUZZER_PlaySound(BUZZER_VIETNAM_NATIONAL_ANTHEM);
 }
 
 void scr_startup_handle(ak_msg_t* msg) {
@@ -53,10 +64,18 @@ void scr_startup_handle(ak_msg_t* msg) {
 	}
 		break;
 
-	case AC_DISPLAY_BUTON_DOWN_RELEASED:
-	case AC_DISPLAY_BUTON_UP_RELEASED: {
-		APP_DBG_SIG("AC_DISPLAY_SHOW_LOGO\n");
+	case AC_DISPLAY_BUTON_DOWN_RELEASED: {
+		APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
+		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
 		SCREEN_TRAN(scr_circle_escape_handle, &scr_circle_escape);
+	}
+		break;
+	
+	case AC_DISPLAY_BUTON_UP_RELEASED: {
+		APP_DBG_SIG("AC_DISPLAY_BUTON_UP_RELEASED\n");
+		// To silent the sound
+		settingdata.silent = !settingdata.silent;
+		BUZZER_Sleep(settingdata.silent);
 	}
 		break;
 

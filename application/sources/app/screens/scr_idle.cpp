@@ -140,7 +140,7 @@ void scr_idle_handle(ak_msg_t* msg) {
 			v_idle_ball.push_back(new_ball);
 		}
 		else {
-			BUZZER_PlayTones(tones_3beep);
+			BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 		}
 	}
 		break;

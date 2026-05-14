@@ -111,6 +111,7 @@ void scr_peashooter_handle(ak_msg_t* msg) {
     case AC_DISPLAY_BUTON_MODE_RELEASED: {
         APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
         timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_BALL_ESCAPE_UPDATE);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
         SCREEN_TRAN(scr_idle_handle, &scr_idle);
     }
         break;
@@ -118,12 +119,14 @@ void scr_peashooter_handle(ak_msg_t* msg) {
     case AC_DISPLAY_BUTON_UP_RELEASED: {
         APP_DBG_SIG("AC_DISPLAY_BUTON_UP_RELEASED\n");
         set_shooting_interval_ms(shooting_interval_ms - SHOOTING_INTERVAL_STEP_MS);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
     }
         break;
     
     case AC_DISPLAY_BUTON_DOWN_RELEASED: {
         APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
         set_shooting_interval_ms(shooting_interval_ms + SHOOTING_INTERVAL_STEP_MS);
+        BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
     }
         break;
 

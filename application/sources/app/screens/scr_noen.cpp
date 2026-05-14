@@ -87,7 +87,7 @@ void scr_noen_handle(ak_msg_t* msg) {
 				  AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SNOW_MOVING_UPDATE_INTERAL, \
 				  TIMER_PERIODIC);
 
-		BUZZER_PlayTones(tones_merryChrismast);
+		BUZZER_PlaySound(BUZZER_SOUND_JINGLE_BELLS);
 
 		timer_set(AC_TASK_DISPLAY_ID, \
 				  AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SLEEP, \
@@ -131,7 +131,7 @@ void scr_noen_handle(ak_msg_t* msg) {
 
 	case AC_DISPLAY_BUTON_DOWN_RELEASED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_RELEASED\n");
-		BUZZER_PlayTones(tones_merryChrismast);
+		BUZZER_PlaySound(BUZZER_SOUND_JINGLE_BELLS);
 	}
 		break;
 

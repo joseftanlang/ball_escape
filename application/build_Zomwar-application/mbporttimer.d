@@ -73,6 +73,7 @@ build_Zomwar-application/mbporttimer.o: \
  sources/platform/stm32l/stm32l1xx_conf.h \
  sources/platform/stm32l/Libraries/CMSIS/Device/ST/STM32L1xx/Include/system_stm32l1xx.h \
  sources/common/container/ring_buffer.h \
+ sources/driver/buzzer/buzzer_music.h \
  sources/networks/mbmaster-v2.9.6/demo/STM32/Port/mbport.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/mbm.h \
  sources/networks/mbmaster-v2.9.6/demo/STM32/Port/mbmconfig.h \

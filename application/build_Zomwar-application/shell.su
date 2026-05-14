@@ -14,6 +14,6 @@ sources/app/shell.cpp:782:9:int32_t shell_boot(uint8_t*)	104	static
 sources/app/shell.cpp:848:9:int32_t shell_fwu(uint8_t*)	96	static
 sources/app/shell.cpp:871:9:int32_t shell_buzzer(uint8_t*)	8	static
 sources/app/shell.cpp:594:9:int32_t shell_dbg(uint8_t*)	8	static
-sources/app/shell.cpp:911:9:int32_t shell_modbus(uint8_t*)	24	static
+sources/app/shell.cpp:916:9:int32_t shell_modbus(uint8_t*)	24	static
 sources/app/shell.cpp:382:9:int32_t shell_epi(uint8_t*)	0	static
 sources/app/shell.cpp:513:9:int32_t shell_lcd(uint8_t*)	8	static

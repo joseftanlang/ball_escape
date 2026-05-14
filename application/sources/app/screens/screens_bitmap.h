@@ -12,5 +12,7 @@ extern const unsigned char epd_bitmap_ball_flying_1 [];
 extern const unsigned char epd_bitmap_ball_flying_2 [];
 extern const unsigned char epd_bitmap_ball_flying_3 [];
 extern const unsigned char epd_bitmap_ball_flying_4 [];
+extern const unsigned char bitmap_vietnam_flag_w [];
+extern const unsigned char bitmap_vietnam_flag_b [];
 
 #endif //__SCREENS_BITMAP_H__

@@ -869,29 +869,33 @@ int32_t shell_psv(uint8_t* argv) {
 }
 
 int32_t shell_buzzer(uint8_t* argv) {
-	switch (*(argv + 5)) {
+	switch (*(argv + 6)) {
 	case 'i': {
 		BUZZER_Init();
 	}
 		break;
 
 	case '1': {
-		BUZZER_PlayTones(tones_startup);
+		BUZZER_PlaySound(BUZZER_SOUND_WELCOME);
 	}
 		break;
 
 	case '2': {
-		BUZZER_PlayTones(tones_3beep);
+		BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
 	}
 		break;
 
 	case '3': {
-		BUZZER_PlayTones(tones_SMB);
+		BUZZER_PlaySound(BUZZER_SOUND_MARIO_KART);
 	}
 		break;
 
 	case '4': {
-		BUZZER_PlayTones(tones_merryChrismast);
+		BUZZER_PlaySound(BUZZER_SOUND_JINGLE_BELLS);
+	}
+		break;
+	case '5': {
+		BUZZER_PlaySound(BUZZER_VIETNAM_NATIONAL_ANTHEM);
 	}
 		break;
 
@@ -902,6 +906,7 @@ int32_t shell_buzzer(uint8_t* argv) {
 		LOGIN_PRINT("3. \"beep 2\"                           : buzzer play tones three beeps \n");
 		LOGIN_PRINT("4. \"beep 3\"                           : buzzer play tones super mario bros \n");
 		LOGIN_PRINT("4. \"beep 4\"                           : buzzer play tones merry chrismast \n");
+		LOGIN_PRINT("5. \"beep 5\"                           : buzzer play tones vietnam national anthem \n");
 		break;
 	}
 
