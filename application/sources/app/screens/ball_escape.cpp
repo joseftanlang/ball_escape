@@ -13,6 +13,7 @@
 #define CIRCLE_SHRINK_STEP (4)
 #define CIRCLE_SPAWN_INTERVAL_TICKS (20)
 #define CIRCLE_MIN_RADIUS (BITMAP_BALL_WIDTH + 1)
+#define CIRCLE_HIT_MARGIN (5)
 
 #define BALL_START_X (CIRCLE_CENTER_X - (BITMAP_BALL_WIDTH / 2))
 #define BALL_START_Y (CIRCLE_CENTER_Y)
@@ -25,11 +26,14 @@
 
 using namespace std;
 
+struct circle_state;
+
 static void view_circle_escape();
 static void view_circle_draw();
 static void update_circle_rotation(int delta_deg);
 static void update_game_tick();
 static void update_ball_motion();
+static void push_ball_out_of_circle(const circle_state &circle);
 static int normalize_angle(int angle_deg);
 static bool angle_in_gap(int angle_deg, int gap_center_deg, int gap_width_deg);
 
@@ -155,11 +159,59 @@ static bool circle_hit_by_ball(const circle_state &circle)
     int dx = ball_center_x - CIRCLE_CENTER_X;
     int dy = ball_center_y - CIRCLE_CENTER_Y;
     int distance_sq = dx * dx + dy * dy;
-    int hit_margin = 5;
-    int outer_radius_sq = (circle.radius + hit_margin) * (circle.radius + hit_margin);
-    int inner_radius_sq = (circle.radius - hit_margin) * (circle.radius - hit_margin);
+    int outer_radius_sq = (circle.radius + CIRCLE_HIT_MARGIN) * (circle.radius + CIRCLE_HIT_MARGIN);
+    int inner_radius_sq = (circle.radius - CIRCLE_HIT_MARGIN) * (circle.radius - CIRCLE_HIT_MARGIN);
 
     return (distance_sq <= outer_radius_sq) && (distance_sq >= inner_radius_sq);
+}
+
+// Move the ball out of the collision band so the next tick does not instantly collide again.
+static void push_ball_out_of_circle(const circle_state &circle)
+{
+    const int min_y = CIRCLE_CENTER_Y - CIRCLE_RADIUS;
+    const int max_y = CIRCLE_CENTER_Y + CIRCLE_RADIUS - BITMAP_BALL_HEIGHT;
+    const int move_dir = (ball_vy >= 0) ? 1 : -1;
+
+    // Move in the new travel direction until we are out of this ring's hit zone.
+    for (int i = 0; i < (CIRCLE_HIT_MARGIN * 4); i++)
+    {
+        if (!circle_hit_by_ball(circle))
+        {
+            break;
+        }
+
+        ball_y += move_dir;
+
+        if (ball_y < min_y)
+        {
+            ball_y = min_y;
+            break;
+        }
+        else if (ball_y > max_y)
+        {
+            ball_y = max_y;
+            break;
+        }
+    }
+
+    // Fallback if still overlapping (can happen with fast shrink/frame timing).
+    if (circle_hit_by_ball(circle))
+    {
+        int ball_center_y = ball_y + (BITMAP_BALL_HEIGHT / 2);
+        int dy = ball_center_y - CIRCLE_CENTER_Y;
+        int sign = (dy >= 0) ? 1 : -1;
+        int safe_center_y = CIRCLE_CENTER_Y + sign * (circle.radius + CIRCLE_HIT_MARGIN + 1);
+        ball_y = safe_center_y - (BITMAP_BALL_HEIGHT / 2);
+
+        if (ball_y < min_y)
+        {
+            ball_y = min_y;
+        }
+        else if (ball_y > max_y)
+        {
+            ball_y = max_y;
+        }
+    }
 }
 
 // This function will be called periodically to update the game state, it will update the ball motion, spawn new circles, shrink existing circles, and check for collisions between the ball and the circles
@@ -244,6 +296,7 @@ static void update_ball_motion()
             }
 
             ball_vy = -ball_vy;
+            push_ball_out_of_circle(active_circles[index]);
             break;
         }
     }

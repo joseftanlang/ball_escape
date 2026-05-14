@@ -69,7 +69,8 @@ void scr_charts_game_handle(ak_msg_t* msg) {
 		// BUZZER_PlaySound(BUZZER_SOUND_CLICK);
         break;
     case AC_DISPLAY_BUTON_MODE_RELEASED:
-        /* code */
+        APP_DBG_SIG("AC_DISPLAY_BUTTON_MODE_LONG_PRESSED\n");
+        SCREEN_TRAN(scr_info_handle, &scr_info);
         break;
     default:
         break;
