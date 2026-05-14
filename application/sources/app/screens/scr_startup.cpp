@@ -39,12 +39,12 @@ void view_scr_startup() {
 	view_render.drawBitmap(0,0,bitmap_vietnam_flag_b,128,64,WHITE);
 	// view_render.drawBitmap(0,0,bitmap_vietnam_flag_w,128,64,BLACK);
 
-	view_render.setCursor(0, 54);
+	view_render.setCursor(30, 54);
 	view_render.setTextSize(1);
 	view_render.setTextColor(BLACK);
 	view_render.print("Vietnam Anthem");
 
-	BUZZER_PlaySound(BUZZER_VIETNAM_NATIONAL_ANTHEM);
+	// BUZZER_PlaySound(BUZZER_VIETNAM_NATIONAL_ANTHEM);
 }
 
 void scr_startup_handle(ak_msg_t* msg) {
@@ -60,7 +60,7 @@ void scr_startup_handle(ak_msg_t* msg) {
 	case AC_DISPLAY_BUTON_MODE_RELEASED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
-		SCREEN_TRAN(scr_idle_handle, &scr_idle);
+		SCREEN_TRAN(scr_dvd_handle, &scr_dvd);
 	}
 		break;
 

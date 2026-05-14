@@ -14,5 +14,13 @@ extern const unsigned char epd_bitmap_ball_flying_3 [];
 extern const unsigned char epd_bitmap_ball_flying_4 [];
 extern const unsigned char bitmap_vietnam_flag_w [];
 extern const unsigned char bitmap_vietnam_flag_b [];
+extern const unsigned char bitmap_DVD [];
+extern const unsigned char epd_bitmap_penalty_shoot_1 [];
+extern const unsigned char epd_bitmap_penalty_shoot_2 [];
+extern const unsigned char epd_bitmap_goal_post [];
+extern const unsigned char epd_bitmap_goal_keeper_saving [];
+extern const unsigned char epd_bitmap_soccer_guy_shooting_action [];
+extern const unsigned char bitmap_winner_goal_image [];
+extern const unsigned char bitmap_lose_game [];
 
 #endif //__SCREENS_BITMAP_H__

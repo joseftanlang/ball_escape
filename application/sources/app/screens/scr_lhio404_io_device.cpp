@@ -196,6 +196,29 @@ void scr_lhio404_io_device_handle(ak_msg_t *msg)
 	}
 	break;
 
+	case AC_DISPLAY_BUTON_LONG_UP_RELEASED:
+	{
+		APP_DBG_SIG("AC_DISPLAY_BUTON_LONG_UP_RELEASED\n");
+		//ALL the switch turns on
+		for (uint16_t regIndex = 4; regIndex < MB_LHIO404_IO_Device.listRegAmount; ++regIndex)
+		{
+			MB_LHIO404_IO_Device.listRegDevice[regIndex].regValue = 1;
+		}
+		BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
+	}
+	break;
+
+	case AC_DISPLAY_BUTON_LONG_DOWN_RELEASED:
+	{
+		APP_DBG_SIG("AC_DISPLAY_BUTON_LONG_DOWN_RELEASED\n");
+		//ALL the switch turns off
+		for (uint16_t regIndex = 4; regIndex < MB_LHIO404_IO_Device.listRegAmount; ++regIndex)
+		{
+			MB_LHIO404_IO_Device.listRegDevice[regIndex].regValue = 0;
+		}
+		BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
+	}
+
 	default:
 		break;
 	}

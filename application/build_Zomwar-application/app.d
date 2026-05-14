@@ -239,7 +239,9 @@ build_Zomwar-application/app.o: sources/app/app.cpp \
  sources/app/screens/scr_lhio404_io_device.h \
  sources/app/screens/scr_peashooter.h sources/app/screens/ball_escape.h \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
- sources/app/app_eeprom.h sources/app/task_zigbee.h sources/sys/sys_irq.h \
+ sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
+ sources/app/screens/scr_soccer.h sources/app/task_zigbee.h \
+ sources/sys/sys_irq.h \
  sources/platform/stm32l/arduino/libraries/SPI/SPI.h \
  sources/platform/stm32l/arduino/cores/WString.h \
  sources/platform/stm32l/arduino/cores/HardwareSerial.h \

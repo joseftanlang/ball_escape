@@ -1,0 +1,4 @@
+sources/app/screens/scr_soccer.cpp:98:13:void view_scr_soccer()	32	static
+sources/app/screens/scr_soccer.cpp:167:1:cpp)	0	static
+sources/app/screens/scr_soccer.cpp:167:1:cpp)	0	static
+sources/app/screens/scr_soccer.cpp:138:6:void scr_soccer_handle(ak_msg_t*)	24	static

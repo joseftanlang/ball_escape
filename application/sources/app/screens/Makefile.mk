@@ -14,3 +14,5 @@ SOURCES_CPP += sources/app/screens/scr_peashooter.cpp
 SOURCES_CPP += sources/app/screens/screens_bitmap.cpp
 SOURCES_CPP += sources/app/screens/ball_escape.cpp
 SOURCES_CPP += sources/app/screens/scr_score.cpp
+SOURCES_CPP += sources/app/screens/scr_dvd.cpp
+SOURCES_CPP += sources/app/screens/scr_soccer.cpp

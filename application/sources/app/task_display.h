@@ -11,6 +11,8 @@
 #include "scr_peashooter.h"
 #include "ball_escape.h"
 #include "scr_score.h"
+#include "scr_dvd.h"
+#include "scr_soccer.h"
 
 #define LCD_WIDTH			(124)
 #define LCD_HEIGHT			(60)
