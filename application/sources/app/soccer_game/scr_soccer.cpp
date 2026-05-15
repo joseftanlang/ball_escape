@@ -635,12 +635,12 @@ void scr_soccer_handle(ak_msg_t *msg)
         last_soccer_input_ms = 0;
 
         // setup initial game state
-        // task_post_pure_msg(AR_SOCCER_GAME_BALL_TICK_ID, AR_SOCCER_GAME_BALL_SETUP);
-        // task_post_pure_msg(AR_SOCCER_GAME_KEEPER_TICK_ID, AR_SOCCER_GAME_KEEPER_SETUP);
-        // task_post_pure_msg(AR_SOCCER_GAME_STRIKER_TICK_ID, AR_SOCCER_GAME_STRIKER_SETUP);
-        // task_post_pure_msg(AR_SOCCER_GAME_COUNTDOWN_TICK_ID, AR_SOCCER_GAME_COUNTDOWN_SETUP);
-        // task_post_pure_msg(AR_SOCCER_GAME_SUPER_MODE_TICK_ID, AR_SOCCER_GAME_SUPER_MODE_SETUP);
-        // task_post_pure_msg(AR_SOCCER_GAME_RESULT_TICK_ID, AR_SOCCER_GAME_RESULT_SETUP);
+        task_post_pure_msg(AR_SOCCER_GAME_BALL_TICK_ID, AR_SOCCER_GAME_BALL_SETUP);
+        task_post_pure_msg(AR_SOCCER_GAME_KEEPER_TICK_ID, AR_SOCCER_GAME_KEEPER_SETUP);
+        task_post_pure_msg(AR_SOCCER_GAME_STRIKER_TICK_ID, AR_SOCCER_GAME_STRIKER_SETUP);
+        task_post_pure_msg(AR_SOCCER_GAME_COUNTDOWN_TICK_ID, AR_SOCCER_GAME_COUNTDOWN_SETUP);
+        task_post_pure_msg(AR_SOCCER_GAME_SUPER_MODE_TICK_ID, AR_SOCCER_GAME_SUPER_MODE_SETUP);
+        task_post_pure_msg(AR_SOCCER_GAME_RESULT_TICK_ID, AR_SOCCER_GAME_RESULT_SETUP);
 
 
         view_render.drawRect(0, 0, 128, 64, WHITE); // use this to check for the boundary

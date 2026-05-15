@@ -35,7 +35,7 @@ extern "C"
 
 /* sizeof pure message pool */
 #ifndef AK_PURE_MSG_POOL_SIZE
-#define AK_PURE_MSG_POOL_SIZE		(32)
+#define AK_PURE_MSG_POOL_SIZE		(64)
 #endif
 
 /* sizeof dynamic message pool */

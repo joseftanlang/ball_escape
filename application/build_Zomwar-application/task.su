@@ -12,7 +12,7 @@ sources/ak/src/task.c:246:6:task_exit_interrupt	8	static
 sources/ak/src/task.c:256:5:task_init	8	static
 sources/ak/src/task.c:310:6:task_polling_set_ability	16	static
 sources/ak/src/task.c:334:6:task_polling_run	8	static
-sources/ak/src/task.c:281:5:task_run	16	static
+sources/ak/src/task.c:281:5:task_run	24	static
 sources/ak/src/task.c:454:6:task_pri_queue_dump	32	static
 sources/ak/src/task.c:491:11:task_self	0	static
 sources/ak/src/task.c:495:11:get_current_task_id	0	static

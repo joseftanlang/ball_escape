@@ -73,6 +73,7 @@ include sources/libraries/Makefile.mk
 include sources/sys/Makefile.mk
 include sources/networks/Makefile.mk
 include sources/platform/stm32l/Makefile.mk
+include sources/app/soccer_game/Makefile.mk
 
 OBJECTS_DIR = build_$(NAME_MODULE)
 TARGET = $(OBJECTS_DIR)/$(NAME_MODULE).axf

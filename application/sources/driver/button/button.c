@@ -6,6 +6,7 @@ uint8_t button_init(button_t* button, uint32_t u, uint8_t id, pf_button_ctrl ini
 	button->counter		=	0;
 	button->unit		=	u;
 	button->state		=	BUTTON_SW_STATE_RELEASED;
+	button->counter_enable	= 	BUTTON_ENABLE;
 
 	button->init		=	init;
 	button->read		=	read;

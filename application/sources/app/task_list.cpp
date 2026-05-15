@@ -20,6 +20,16 @@ const task_t app_task_table[] = {
 	{AC_TASK_DBG_ID				,	TASK_PRI_LEVEL_4	,	task_dbg			},
 	{AC_TASK_DISPLAY_ID			,	TASK_PRI_LEVEL_4	,	task_display		},
 
+	/*************************************************************************/
+	/* SOCCER GAME */
+	/*************************************************************************/
+	// {AR_SOCCER_GAME_BALL_TICK_ID	,	TASK_PRI_LEVEL_4	,	task_soccer_game_ball_tick	},
+	// {AR_SOCCER_GAME_KEEPER_TICK_ID	,	TASK_PRI_LEVEL_4	,	task_soccer_game_keeper_tick	},
+	// {AR_SOCCER_GAME_RESULT_TICK_ID	,	TASK_PRI_LEVEL_4	,	task_soccer_game_result_tick	},
+	// {AR_SOCCER_GAME_COUNTDOWN_TICK_ID	,	TASK_PRI_LEVEL_4	,	task_soccer_game_countdown_tick	},
+	// {AR_SOCCER_GAME_SUPER_MODE_TICK_ID	,	TASK_PRI_LEVEL_4	,	task_soccer_game_super_mode_tick	},
+	// {AR_SOCCER_GAME_STRIKER_TICK_ID	,	TASK_PRI_LEVEL_4	,	task_soccer_game_striker_tick	},
+
 	#if defined(TASK_ZIGBEE_EN)
 	{AC_TASK_ZIGBEE_ID			,	TASK_PRI_LEVEL_4	,	task_zigbee			},
 	#endif

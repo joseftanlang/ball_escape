@@ -23,5 +23,7 @@ extern const unsigned char epd_bitmap_soccer_guy_shooting_action [];
 extern const unsigned char bitmap_winner_goal_image [];
 extern const unsigned char bitmap_lose_game [];
 extern const unsigned char bitmap_keeper_stance [];
+extern const unsigned char bitmap_soccer_striker [];
+extern const unsigned char bitmap_socer_striker_finsh [];
 
 #endif //__SCREENS_BITMAP_H__
