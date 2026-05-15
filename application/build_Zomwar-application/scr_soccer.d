@@ -35,11 +35,12 @@ build_Zomwar-application/scr_soccer.o: sources/app/screens/scr_soccer.cpp \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h \
  sources/common/container/log_queue.h sources/ak/inc/port.h \
  sources/ak/inc/message.h sources/ak/inc/timer.h sources/ak/inc/timer.h \
- sources/sys/sys_ctrl.h sources/app/app_data.h sources/sys/sys_boot.h \
- sources/sys/sys_dbg.h sources/ak/inc/task.h sources/sys/sys_ctrl.h \
- sources/common/xprintf.h sources/app/app.h sources/ak/inc/ak.h \
- sources/app/app_if.h sources/app/app_eeprom.h sources/app/app_data.h \
- sources/driver/buzzer/buzzer.h sources/platform/stm32l/io_cfg.h \
+ sources/driver/led/led.h sources/sys/sys_ctrl.h sources/app/app_data.h \
+ sources/sys/sys_boot.h sources/sys/sys_dbg.h sources/ak/inc/task.h \
+ sources/sys/sys_ctrl.h sources/common/xprintf.h sources/app/app.h \
+ sources/ak/inc/ak.h sources/app/app_if.h sources/app/app_eeprom.h \
+ sources/app/app_data.h sources/driver/buzzer/buzzer.h \
+ sources/platform/stm32l/io_cfg.h \
  sources/platform/stm32l/Libraries/CMSIS/Device/ST/STM32L1xx/Include/stm32l1xx.h \
  sources/platform/stm32l/Libraries/CMSIS/Include/core_cm3.h \
  sources/platform/stm32l/Libraries/CMSIS/Include/core_cmInstr.h \
@@ -169,4 +170,5 @@ build_Zomwar-application/scr_soccer.o: sources/app/screens/scr_soccer.cpp \
  sources/app/screens/scr_peashooter.h sources/app/screens/ball_escape.h \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
  sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
- sources/app/screens/scr_soccer.h sources/app/screens/screens_bitmap.h
+ sources/app/screens/scr_soccer.h sources/app/screens/screens_bitmap.h \
+ sources/app/screens/scr_idle.h sources/app/task_life.h

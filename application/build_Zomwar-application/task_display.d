@@ -172,4 +172,4 @@ build_Zomwar-application/task_display.o: sources/app/task_display.cpp \
  sources/app/screens/scr_peashooter.h sources/app/screens/ball_escape.h \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
  sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
- sources/app/screens/scr_soccer.h
+ sources/app/screens/scr_soccer.h sources/driver/led/led.h

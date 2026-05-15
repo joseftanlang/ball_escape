@@ -161,7 +161,7 @@ build_Zomwar-application/ball_escape.o: \
  sources/app/screens/scr_peashooter.h sources/app/screens/ball_escape.h \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
  sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
- sources/app/screens/scr_soccer.h \
+ sources/app/screens/scr_soccer.h sources/driver/led/led.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/algorithm \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/utility \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_relops.h \

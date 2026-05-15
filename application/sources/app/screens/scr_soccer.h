@@ -5,6 +5,7 @@
 #include "port.h"
 #include "message.h"
 #include "timer.h"
+#include "led.h"
 
 #include "sys_ctrl.h"
 #include "sys_dbg.h"
