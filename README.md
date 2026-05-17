@@ -128,8 +128,4 @@ See [application/Makefile](application/Makefile#L1) for configuration knobs such
 - See `LICENSE` at repository root for licensing terms.
 - This project uses several bundled libraries (Adafruit GFX, STM32 StdPeriph) — see `application/sources/driver` and `application/sources/platform/stm32l/Libraries` for their respective sources and licenses.
 
----
-If you'd like, I can:
-- expand the README with a Mermaid architecture diagram, or
-- add a short Quick Start script (`scripts/setup-dev.sh`) that sets up a recommended Linux toolchain and environment variables for building and flashing.
 
