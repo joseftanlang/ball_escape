@@ -10,6 +10,14 @@ Adafruit_oled_drv::Adafruit_oled_drv() : Adafruit_GFX(WIDTH, HEIGHT) {
 }
 Adafruit_oled_drv::~Adafruit_oled_drv() {}
 
+const unsigned char* Adafruit_oled_drv::getFrameBuffer() const {
+	return m_pFramebuffer;
+}
+
+unsigned int Adafruit_oled_drv::getFrameBufferSize() const {
+	return FBSIZE;
+}
+
 bool Adafruit_oled_drv::initialize() {
 	// setup the pin mode
 	pinMode(m_sda, OUTPUT);

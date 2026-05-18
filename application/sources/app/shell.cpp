@@ -56,6 +56,7 @@
 static char cmd_buffer[STR_BUFFER_SIZE];
 static char* str_list[STR_LIST_MAX_SIZE];
 static uint8_t str_list_len;
+static void shell_lcd_dump_framebuffer();
 
 static uint8_t str_parser(char* str);
 static char* str_parser_get_attr(uint8_t);
@@ -368,11 +369,12 @@ int32_t shell_fatal(uint8_t* argv) {
 		break;
 
 	case 'p':
-		// draw a single pixel
-		view_render.drawPixel(9, 1, WHITE);
-		view_render.drawPixel(13, 4, WHITE);
-		view_render.drawPixel(16, 7, WHITE);
-		view_render.update ();
+		// // draw a single pixel
+		// view_render.drawPixel(9, 1, WHITE);
+		// view_render.drawPixel(13, 4, WHITE);
+		// view_render.drawPixel(16, 7, WHITE);
+		// view_render.update ();
+		shell_lcd_dump_framebuffer();
 		break;
 
 	default:
@@ -386,7 +388,7 @@ int32_t shell_fatal(uint8_t* argv) {
 		LOGIN_PRINT("  r : clear screen\n");
 		LOGIN_PRINT("  a : print text with white color\n");
 		LOGIN_PRINT("  c : print text with black color\n");
-		LOGIN_PRINT("  p : draw pixels\n");
+		LOGIN_PRINT("  p : draw screen\n");
 		break;
 	}
 
@@ -530,7 +532,24 @@ int32_t shell_flash(uint8_t* argv) {
 }
 
 int32_t shell_lcd(uint8_t* argv) {
-	switch (*(argv + 4)) {
+	char option = *(argv + 4);
+
+	if ((option == 0) || (option == ' ')) {
+		LOGIN_PRINT("[HELP] lcd command options:\n");
+		LOGIN_PRINT("  i : initialize lcd\n");
+		LOGIN_PRINT("  o : turn on lcd\n");
+		LOGIN_PRINT("  f : turn off lcd\n");
+		LOGIN_PRINT("  b : fill screen with black\n");
+		LOGIN_PRINT("  w : fill screen with white\n");
+		LOGIN_PRINT("  t : display ak logo\n");
+		LOGIN_PRINT("  r : clear screen\n");
+		LOGIN_PRINT("  a : print text with white color\n");
+		LOGIN_PRINT("  c : print text with black color\n");
+		LOGIN_PRINT("  p : draw pixels\n");
+		return 0;
+	}
+
+	switch (option) {
 	case 'i':
 		view_render.initialize();
 		break;
@@ -542,6 +561,9 @@ int32_t shell_lcd(uint8_t* argv) {
 	case 'f':
 		view_render.display_off();
 		break;
+	case 'g':
+		shell_lcd_dump_framebuffer();
+		break;		
 
 	case 'b':
 		view_render.fillScreen(BLACK);
@@ -575,6 +597,7 @@ int32_t shell_lcd(uint8_t* argv) {
 
 	case 'r':
 		view_render.clear ();
+		view_render.update ();
 		break;
 
 	case 'a':
@@ -607,6 +630,33 @@ int32_t shell_lcd(uint8_t* argv) {
 	}
 
 	return 0;
+}
+
+void shell_lcd_dump_framebuffer() {
+	const unsigned char* frame_buffer = view_render.getFrameBuffer();
+	unsigned int frame_buffer_size = view_render.getFrameBufferSize();
+
+	if (frame_buffer == NULL) {
+		LOGIN_PRINT("lcd framebuffer is not initialized\n");
+		return;
+	}
+
+	LOGIN_PRINT("[DUMP] frame buffer lcd => start\n");
+	LOGIN_PRINT("width=128 height=64 bytes=%d\n", frame_buffer_size);
+
+	for (unsigned int i = 0; i < frame_buffer_size; i++) {
+		if ((i % 16) == 0) {
+			sys_ctrl_independent_watchdog_reset();
+			sys_ctrl_soft_watchdog_reset();
+			LOGIN_PRINT("\n");
+		}
+		LOGIN_PRINT("0x%02X", frame_buffer[i]);
+		if ((i + 1) < frame_buffer_size) {
+			LOGIN_PRINT(",");
+		}
+	}
+
+	LOGIN_PRINT("\n[DUMP] frame buffer lcd => end\n");
 }
 
 /* https://www.charbase.com */
