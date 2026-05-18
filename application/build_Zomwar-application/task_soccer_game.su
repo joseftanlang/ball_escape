@@ -1,0 +1,6 @@
+sources/app/soccer_game/task_soccer_game.cpp:11:6:void task_soccer_game_ball_tick(ak_msg_t*)	0	static
+sources/app/soccer_game/task_soccer_game.cpp:16:6:void task_soccer_game_keeper_tick(ak_msg_t*)	0	static
+sources/app/soccer_game/task_soccer_game.cpp:21:6:void task_soccer_game_striker_tick(ak_msg_t*)	0	static
+sources/app/soccer_game/task_soccer_game.cpp:26:6:void task_soccer_game_countdown_tick(ak_msg_t*)	0	static
+sources/app/soccer_game/task_soccer_game.cpp:31:6:void task_soccer_game_super_mode_tick(ak_msg_t*)	0	static
+sources/app/soccer_game/task_soccer_game.cpp:36:6:void task_soccer_game_result_tick(ak_msg_t*)	0	static

@@ -171,4 +171,8 @@ build_Zomwar-application/scr_soccer.o: sources/app/screens/scr_soccer.cpp \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
  sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
  sources/app/screens/scr_soccer.h sources/app/screens/screens_bitmap.h \
- sources/app/screens/scr_idle.h sources/app/task_life.h
+ sources/app/screens/scr_idle.h sources/app/task_life.h \
+ sources/app/soccer_game/ar_ball.h \
+ sources/app/soccer_game/../screens/scr_soccer.h \
+ sources/app/soccer_game/ar_keeper.h sources/app/soccer_game/scr_soccer.h \
+ sources/app/soccer_game/ar_striker.h

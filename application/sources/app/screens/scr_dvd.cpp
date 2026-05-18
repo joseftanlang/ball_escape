@@ -1,4 +1,5 @@
 #include "scr_dvd.h"
+#include "scr_soccer.h"
 
 static void view_scr_dvd();
 static void dvd_moving();

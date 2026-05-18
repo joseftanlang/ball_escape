@@ -367,7 +367,26 @@ int32_t shell_fatal(uint8_t* argv) {
 	}
 		break;
 
+	case 'p':
+		// draw a single pixel
+		view_render.drawPixel(9, 1, WHITE);
+		view_render.drawPixel(13, 4, WHITE);
+		view_render.drawPixel(16, 7, WHITE);
+		view_render.update ();
+		break;
+
 	default:
+		LOGIN_PRINT("[HELP] lcd command options:\n");
+		LOGIN_PRINT("  i : initialize lcd\n");
+		LOGIN_PRINT("  o : turn on lcd\n");
+		LOGIN_PRINT("  f : turn off lcd\n");
+		LOGIN_PRINT("  b : fill screen with black\n");
+		LOGIN_PRINT("  w : fill screen with white\n");
+		LOGIN_PRINT("  t : display ak logo\n");
+		LOGIN_PRINT("  r : clear screen\n");
+		LOGIN_PRINT("  a : print text with white color\n");
+		LOGIN_PRINT("  c : print text with black color\n");
+		LOGIN_PRINT("  p : draw pixels\n");
 		break;
 	}
 

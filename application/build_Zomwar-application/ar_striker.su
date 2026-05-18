@@ -1,0 +1,2 @@
+sources/app/soccer_game/ar_striker.cpp:5:6:void ar_striker_move_position(int)	0	static
+sources/app/soccer_game/ar_striker.cpp:10:6:void ar_striker_shoot_ball()	0	static

@@ -1,0 +1,4 @@
+sources/app/soccer_game/ar_ball.cpp:63:6:void ar_ball_score_goal()	8	static
+sources/app/soccer_game/ar_ball.cpp:85:6:void ar_ball_lose_life()	8	static
+sources/app/soccer_game/ar_ball.cpp:6:6:void ar_ball_update_goalkeeper_game()	8	static
+sources/app/soccer_game/ar_ball.cpp:37:6:void ar_ball_update_shooter_game()	8	static

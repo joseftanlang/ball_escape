@@ -1,6 +1,5 @@
-build_Zomwar-application/ar_ball.o: sources/app/soccer_game/ar_ball.cpp \
- sources/app/soccer_game/ar_ball.h \
- sources/app/soccer_game/../screens/scr_soccer.h sources/ak/inc/fsm.h \
+build_Zomwar-application/task_soccer_game.o: \
+ sources/app/soccer_game/task_soccer_game.cpp sources/ak/inc/task.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
@@ -8,6 +7,7 @@ build_Zomwar-application/ar_ball.o: sources/app/soccer_game/ar_ball.cpp \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+ /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
  sources/ak/inc/ak.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
@@ -22,10 +22,7 @@ build_Zomwar-application/ar_ball.o: sources/app/soccer_game/ar_ball.cpp \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h \
- sources/ak/inc/fsm.h sources/ak/inc/task.h \
- /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
- sources/ak/inc/port.h sources/platform/stm32l/platform.h \
- sources/ak/inc/message.h \
+ sources/ak/inc/fsm.h sources/ak/inc/message.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/stdlib.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdlib \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7-m/nofp/bits/c++config.h \
@@ -34,10 +31,12 @@ build_Zomwar-application/ar_ball.o: sources/app/soccer_game/ar_ball.cpp \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdlib.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/stdlib.h \
  /home/josef/Downloads/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h \
- sources/common/container/log_queue.h sources/ak/inc/port.h \
- sources/ak/inc/message.h sources/ak/inc/timer.h sources/ak/inc/timer.h \
- sources/driver/led/led.h sources/sys/sys_ctrl.h sources/app/app_data.h \
- sources/sys/sys_boot.h sources/sys/sys_dbg.h sources/ak/inc/task.h \
+ sources/ak/inc/port.h sources/platform/stm32l/platform.h \
+ sources/ak/inc/task.h sources/common/container/log_queue.h \
+ sources/app/soccer_game/scr_soccer.h sources/ak/inc/fsm.h \
+ sources/ak/inc/port.h sources/ak/inc/message.h sources/ak/inc/timer.h \
+ sources/ak/inc/timer.h sources/driver/led/led.h sources/sys/sys_ctrl.h \
+ sources/app/app_data.h sources/sys/sys_boot.h sources/sys/sys_dbg.h \
  sources/sys/sys_ctrl.h sources/common/xprintf.h sources/app/app.h \
  sources/ak/inc/ak.h sources/app/app_if.h sources/app/app_eeprom.h \
  sources/app/app_data.h sources/driver/buzzer/buzzer.h \
@@ -171,5 +170,4 @@ build_Zomwar-application/ar_ball.o: sources/app/soccer_game/ar_ball.cpp \
  sources/app/screens/scr_peashooter.h sources/app/screens/ball_escape.h \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
  sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
- sources/app/screens/scr_soccer.h \
- sources/app/soccer_game/../screens/screens_bitmap.h
+ sources/app/screens/scr_soccer.h sources/app/screens/screens_bitmap.h

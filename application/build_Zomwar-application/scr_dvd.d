@@ -170,4 +170,4 @@ build_Zomwar-application/scr_dvd.o: sources/app/screens/scr_dvd.cpp \
  sources/app/screens/scr_score.h sources/driver/eeprom/eeprom.h \
  sources/app/app_eeprom.h sources/app/screens/scr_dvd.h \
  sources/app/screens/scr_soccer.h sources/driver/led/led.h \
- sources/app/screens/screens_bitmap.h
+ sources/app/screens/screens_bitmap.h sources/app/screens/scr_soccer.h

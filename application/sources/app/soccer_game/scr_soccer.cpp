@@ -1,100 +1,15 @@
 #include "scr_soccer.h"
 #include "scr_idle.h"
 #include "task_life.h"
+#include "ar_ball.h"
+#include "ar_keeper.h"
+#include "ar_striker.h"
 
-/*  Things that still need to improve on:
-    calculate the frame and game performace. (the game screen ) --> this would make it less laggy and more responsive.
-    can optimize later the game perfromance once the game is fully functional
-*/
-
-#define GOAL_POST_X (24)
-#define GOAL_POST_Y (0)
-#define GOAL_POST_W (80)
-#define GOAL_POST_H (15)
-
-#define GOAL_KEEPER_X (30)
-#define GOAL_KEEPER_Y (10)
-#define GOAL_KEEPER_W (21)
-#define GOAL_KEEPER_H (25)
-
-#define SOCCER_ACTOR_W (21)
-#define SOCCER_ACTOR_H (25)
-
-#define STRIKER_MIN_X (30)
-#define STRIKER_MAX_X (90)
-#define STRIKER_Y (30)
-#define STRIKER_BALL_OFFSET_X (16)
-#define STRIKER_BALL_OFFSET_Y (21)
-
-#define BALL_POSITION_SCALE (10)
-#define BALL_X (40)
-#define BALL_Y (58)
-#define BALL_RADIUS (3)
-#define BALL_SHOOT_SPEED_Y (-15)
-#define BALL_GOALKEEPER_SPEED_Y (-10)
-#define BALL_GOALKEEPER_SPEED_X (6)
-
-#define STARTING_LIVES (3)
-#define GOALKEEPER_WIN_SCORE (10)
-#define SHOOTER_WIN_SCORE (3)
-#define READY_COUNTDOWN_SECONDS (3)
-#define SUPER_MODE_DURATION_MS (5000)
-#define RESULT_SCREEN_DURATION_MS (3000)
-#define PLAY_TICK_MS (150)
-#define SOCCER_INPUT_COOLDOWN_MS (300)
-#define MOVE_STEP_Y (4)
-#define MOVE_STEP_X (4)
-#define SUPER_MODE_BLINK_COUNT (5)
-#define KEEPER_AUTO_MIN_SPEED (1)
-#define KEEPER_AUTO_MAX_SPEED (4)
-
-enum soccer_role_t
-{
-    SOCCER_ROLE_GOALKEEPER = 0,
-    SOCCER_ROLE_SHOOTER = 1,
-};
-
-enum soccer_phase_t
-{
-    SOCCER_PHASE_SELECT = 0,
-    SOCCER_PHASE_COUNTDOWN,
-    SOCCER_PHASE_PLAYING,
-    SOCCER_PHASE_RESULT,
-};
-
-enum soccer_result_t
-{
-    SOCCER_RESULT_NONE = 0,
-    SOCCER_RESULT_WIN,
-    SOCCER_RESULT_LOSE,
-};
-
-struct soccer_game_t
-{
-    soccer_role_t role;
-    soccer_phase_t phase;
-    soccer_result_t result;
-    int selection_index;
-    int lives;
-    int score;
-    int streak;
-    int countdown_seconds;
-    int keeper_x;
-    int keeper_vx;
-    int striker_x;
-    int striker_y;
-    int ball_x_fp;
-    int ball_y_fp;
-    int ball_vx_fp;
-    int ball_vy_fp;
-    int ball_x;
-    int ball_y;
-    bool super_mode_active;
-    int super_mode_led_toggle_remaining;
-};
-
-static soccer_game_t game_state;
+/* Shared game state is declared in header; define it here for the module */
+soccer_game_t game_state;
 static uint32_t last_soccer_input_ms = 0;
+static bool is_drawing = false;  /* Rendering lock to prevent nested view updates */
+static bool needs_render = true; /* Flag to queue a render on next game tick */
 
 static void view_scr_soccer();
 
@@ -126,7 +41,7 @@ static void poll_super_mode_led_blink()
 }
 
 // Forward declarations of helper functions
-static void stop_soccer_timers()
+void stop_soccer_timers()
 {
     timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_COUNTDOWN);
     timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_PLAY);
@@ -135,7 +50,7 @@ static void stop_soccer_timers()
 }
 
 // Clamps an integer value between a minimum and maximum range
-static int clamp_int(int value, int minimum, int maximum)
+int clamp_int(int value, int minimum, int maximum)
 {
     if (value < minimum)
     {
@@ -150,7 +65,7 @@ static int clamp_int(int value, int minimum, int maximum)
     return value;
 }
 
-static bool accept_soccer_input()
+bool accept_soccer_input()
 {
     const uint32_t current_time_ms = sys_ctrl_millis();
 
@@ -163,15 +78,21 @@ static bool accept_soccer_input()
     return true;
 }
 
+// Mark that we need to render on the next game tick
+static inline void mark_render_needed()
+{
+    needs_render = true;
+}
+
 // Synchronizes the ball's display position with its fixed-point position
-static void sync_ball_display_position()
+void sync_ball_display_position()
 {
     game_state.ball_x = game_state.ball_x_fp / BALL_POSITION_SCALE;
     game_state.ball_y = game_state.ball_y_fp / BALL_POSITION_SCALE;
 }
 
 // Sets the ball's position using fixed-point values and updates the display position accordingly
-static void set_ball_position(int x, int y)
+void set_ball_position(int x, int y)
 {
     game_state.ball_x_fp = x * BALL_POSITION_SCALE;
     game_state.ball_y_fp = y * BALL_POSITION_SCALE;
@@ -179,27 +100,27 @@ static void set_ball_position(int x, int y)
 }
 
 // Setting the striker's position while ensuring it stays within defined bounds, and keeping the ball aligned with the striker based on defined offsets
-static void set_striker_position(int x)
+void set_striker_position(int x)
 {
     game_state.striker_x = clamp_int(x, STRIKER_MIN_X, STRIKER_MAX_X);
     game_state.striker_y = STRIKER_Y;
 }
 
 // Keeps the ball's position aligned with the striker's position based on defined offsets
-static void align_ball_with_striker()
+void align_ball_with_striker()
 {
     set_ball_position(game_state.striker_x + STRIKER_BALL_OFFSET_X - 14, game_state.striker_y + STRIKER_BALL_OFFSET_Y);
 }
 
 // Moves the striker left or right by a fixed step, ensuring it stays within bounds, and keeps the ball aligned with the striker
-static void move_shooter_position(int delta_x)
+void move_shooter_position(int delta_x)
 {
     set_striker_position(game_state.striker_x + delta_x);
     align_ball_with_striker();
 }
 
 // Resets the ball to the starting position and velocity
-static void reset_ball()
+void reset_ball()
 {
     if (game_state.role == SOCCER_ROLE_GOALKEEPER)
     {
@@ -230,13 +151,13 @@ static void reset_ball()
 }
 
 // Schedules the next countdown tick after 1 second
-static void schedule_countdown_tick()
+void schedule_countdown_tick()
 {
     timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_COUNTDOWN, 1000, TIMER_PERIODIC);
 }
 
 // Starts the gameplay phase
-static void begin_gameplay()
+void begin_gameplay()
 {
     timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_COUNTDOWN);
     game_state.phase = SOCCER_PHASE_PLAYING;
@@ -249,31 +170,28 @@ static void begin_gameplay()
     reset_ball();
 
     timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_PLAY, PLAY_TICK_MS, TIMER_PERIODIC);
-    view_scr_soccer();
 }
 
 // Initializes the game state and starts the selection phase
-static void begin_countdown()
+void begin_countdown()
 {
     stop_soccer_timers();
     game_state.phase = SOCCER_PHASE_COUNTDOWN;
     game_state.countdown_seconds = READY_COUNTDOWN_SECONDS;
     schedule_countdown_tick();
-    view_scr_soccer();
 }
 
 // Ends the game and shows the result screen for a few seconds
-static void begin_result(soccer_result_t result)
+void begin_result(soccer_result_t result)
 {
     stop_soccer_timers();
     game_state.phase = SOCCER_PHASE_RESULT;
     game_state.result = result;
     timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_RESULT, RESULT_SCREEN_DURATION_MS, TIMER_ONE_SHOT);
-    view_scr_soccer();
 }
 
 // Resets the game state to start a new game
-static void restart_game()
+void restart_game()
 {
     stop_soccer_timers();
     last_soccer_input_ms = 0;
@@ -292,24 +210,22 @@ static void restart_game()
     game_state.super_mode_active = false;
     stop_super_mode_led_blink();
     reset_ball();
-    view_scr_soccer();
 }
 
 // Toggles the selection between goalkeeper and shooter in the selection screen
-static void toggle_selection()
+void toggle_selection()
 {
     game_state.selection_index = 1 - game_state.selection_index;
-    view_scr_soccer();
 }
 
 // keeps the goalkeeper within the goal area
-static void clamp_keeper_position()
+void clamp_keeper_position()
 {
     game_state.keeper_x = clamp_int(game_state.keeper_x, GOAL_POST_X, GOAL_POST_X + GOAL_POST_W - GOAL_KEEPER_W);
 }
 
 // ball should not go outside of the goal post
-static void clamp_ball_position()
+void clamp_ball_position()
 {
     game_state.ball_x = clamp_int(game_state.ball_x, BALL_RADIUS, 128 - BALL_RADIUS - 1);
     game_state.ball_y = clamp_int(game_state.ball_y, BALL_RADIUS, 64 - BALL_RADIUS - 1);
@@ -318,7 +234,7 @@ static void clamp_ball_position()
 }
 
 // Checks if the goalkeeper is covering the ball's position
-static bool keeper_covers_ball()
+bool keeper_covers_ball()
 {
     const int keeper_left = game_state.keeper_x;
     const int keeper_right = game_state.keeper_x + GOAL_KEEPER_W;
@@ -334,7 +250,7 @@ static bool keeper_covers_ball()
 }
 
 // This function is called when the super mode timer expires to deactivate super mode
-static bool activate_super_mode()
+bool activate_super_mode()
 {
     if (game_state.super_mode_active || game_state.streak < 3)
     {
@@ -344,123 +260,14 @@ static bool activate_super_mode()
     game_state.super_mode_active = true;
     game_state.super_mode_led_toggle_remaining = SUPER_MODE_BLINK_COUNT * 2;
     timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_SOCCER_SUPER_MODE, SUPER_MODE_DURATION_MS, TIMER_ONE_SHOT);
-    view_scr_soccer();
     return true;
 }
 
 // finish super mode when timer expires
-static void finish_super_mode()
+void finish_super_mode()
 {
     game_state.super_mode_active = false;
     stop_super_mode_led_blink();
-    view_scr_soccer();
-}
-
-// handles scoring a goal, updates score and checks for win condition
-static void score_goal()
-{
-    game_state.score++;
-    game_state.streak++;
-    reset_ball();
-
-    if (game_state.role == SOCCER_ROLE_GOALKEEPER)
-    {
-        if (game_state.score >= GOALKEEPER_WIN_SCORE)
-        {
-            begin_result(SOCCER_RESULT_WIN);
-            return;
-        }
-    }
-    else if (game_state.score >= SHOOTER_WIN_SCORE)
-    {
-        begin_result(SOCCER_RESULT_WIN);
-        return;
-    }
-
-    view_scr_soccer();
-}
-
-// handles losing a life, updates lives and checks for lose condition
-static void lose_life()
-{
-    if (game_state.lives > 0)
-    {
-        game_state.lives--;
-    }
-    game_state.streak = 0;
-    game_state.super_mode_active = false;
-    stop_super_mode_led_blink();
-    reset_ball();
-
-    if (game_state.lives <= 0)
-    {
-        begin_result(SOCCER_RESULT_LOSE);
-        return;
-    }
-
-    view_scr_soccer();
-}
-
-// updating the game state for goalkeeper role on each play tick
-static void update_goalkeeper_game()
-{
-    game_state.ball_x_fp += game_state.ball_vx_fp;
-    game_state.ball_y_fp += game_state.ball_vy_fp;
-    sync_ball_display_position();
-
-    if (game_state.ball_x <= BALL_RADIUS || game_state.ball_x >= (128 - BALL_RADIUS - 1))
-    {
-        game_state.ball_vx_fp = -game_state.ball_vx_fp;
-    }
-
-    clamp_ball_position();
-
-    if (game_state.super_mode_active || keeper_covers_ball())
-    {
-        if (game_state.ball_y <= (GOAL_POST_Y + GOAL_POST_H))
-        {
-            score_goal();
-        }
-        return;
-    }
-
-    if (game_state.ball_y <= (GOAL_POST_Y + GOAL_POST_H))
-    {
-        lose_life();
-    }
-}
-
-// updating the game state for shooter role on each play tick
-static void update_shooter_game()
-{
-    game_state.keeper_x += game_state.keeper_vx;
-    if (game_state.keeper_x <= GOAL_POST_X || game_state.keeper_x >= (GOAL_POST_X + GOAL_POST_W - GOAL_KEEPER_W))
-    {
-        game_state.keeper_vx = -game_state.keeper_vx;
-        game_state.keeper_x = clamp_int(game_state.keeper_x, GOAL_POST_X, GOAL_POST_X + GOAL_POST_W - GOAL_KEEPER_W);
-    }
-
-    if (game_state.ball_vy_fp == 0)
-    {
-        align_ball_with_striker();
-        return;
-    }
-
-    game_state.ball_x_fp += game_state.ball_vx_fp;
-    game_state.ball_y_fp += game_state.ball_vy_fp;
-    sync_ball_display_position();
-    clamp_ball_position();
-
-    if (!game_state.super_mode_active && keeper_covers_ball())
-    {
-        lose_life();
-        return;
-    }
-
-    if (game_state.ball_y <= (GOAL_POST_Y + GOAL_POST_H))
-    {
-        score_goal();
-    }
 }
 
 // view screen select screen, countdown screen, playing screen, result screen
@@ -574,8 +381,6 @@ static void view_scr_result()
     }
 }
 
-static bool is_drawing = false; // Add this at the top of your file
-
 // main view function that decides which screen to show based on the current game phase
 static void view_scr_soccer()
 {
@@ -633,17 +438,7 @@ void scr_soccer_handle(ak_msg_t *msg)
         view_render.initialize();
         view_render_display_on();
         last_soccer_input_ms = 0;
-
-        // setup initial game state
-        task_post_pure_msg(AR_SOCCER_GAME_BALL_TICK_ID, AR_SOCCER_GAME_BALL_SETUP);
-        task_post_pure_msg(AR_SOCCER_GAME_KEEPER_TICK_ID, AR_SOCCER_GAME_KEEPER_SETUP);
-        task_post_pure_msg(AR_SOCCER_GAME_STRIKER_TICK_ID, AR_SOCCER_GAME_STRIKER_SETUP);
-        task_post_pure_msg(AR_SOCCER_GAME_COUNTDOWN_TICK_ID, AR_SOCCER_GAME_COUNTDOWN_SETUP);
-        task_post_pure_msg(AR_SOCCER_GAME_SUPER_MODE_TICK_ID, AR_SOCCER_GAME_SUPER_MODE_SETUP);
-        task_post_pure_msg(AR_SOCCER_GAME_RESULT_TICK_ID, AR_SOCCER_GAME_RESULT_SETUP);
-
-
-        view_render.drawRect(0, 0, 128, 64, WHITE); // use this to check for the boundary
+        needs_render = true; /* Force first render */
         restart_game();
     }
     break;
@@ -655,14 +450,14 @@ void scr_soccer_handle(ak_msg_t *msg)
         {
             if (game_state.countdown_seconds <= 1)
             {
-                begin_gameplay();   
+                begin_gameplay();
             }
             else
             {
                 game_state.countdown_seconds--;
                 schedule_countdown_tick();
-                view_scr_soccer();
             }
+            mark_render_needed(); /* Queue render for PLAY_TICK */
         }
     }
     break;
@@ -674,15 +469,17 @@ void scr_soccer_handle(ak_msg_t *msg)
         {
             if (game_state.role == SOCCER_ROLE_GOALKEEPER)
             {
-                update_goalkeeper_game();
+                ar_ball_update_goalkeeper_game();
             }
             else
             {
-                update_shooter_game();
+                ar_keeper_update_game();
+                ar_ball_update_shooter_game();
             }
             poll_super_mode_led_blink();
-            view_scr_soccer();
         }
+        /* Always render on PLAY_TICK - this is the only render point */
+        view_scr_soccer();
     }
     break;
 
@@ -711,6 +508,7 @@ void scr_soccer_handle(ak_msg_t *msg)
         if (game_state.phase == SOCCER_PHASE_SELECT)
         {
             toggle_selection();
+            mark_render_needed();
         }
         else if (game_state.phase == SOCCER_PHASE_PLAYING)
         {
@@ -718,12 +516,13 @@ void scr_soccer_handle(ak_msg_t *msg)
             {
                 game_state.keeper_x -= MOVE_STEP_X;
                 clamp_keeper_position();
+                mark_render_needed();
             }
             else if (game_state.ball_vy_fp == 0)
             {
-                move_shooter_position(-MOVE_STEP_X);
+                ar_striker_move_position(-MOVE_STEP_X);
+                mark_render_needed();
             }
-            // view_scr_soccer();
         }
     }
     break;
@@ -739,6 +538,7 @@ void scr_soccer_handle(ak_msg_t *msg)
         if (game_state.phase == SOCCER_PHASE_SELECT)
         {
             toggle_selection();
+            mark_render_needed();
         }
         else if (game_state.phase == SOCCER_PHASE_PLAYING)
         {
@@ -746,12 +546,13 @@ void scr_soccer_handle(ak_msg_t *msg)
             {
                 game_state.keeper_x += MOVE_STEP_X;
                 clamp_keeper_position();
+                mark_render_needed();
             }
             else if (game_state.ball_vy_fp == 0)
             {
-                move_shooter_position(MOVE_STEP_X);
+                ar_striker_move_position(MOVE_STEP_X);
+                mark_render_needed();
             }
-            // view_scr_soccer();
         }
     }
     break;
@@ -775,8 +576,7 @@ void scr_soccer_handle(ak_msg_t *msg)
         {
             if (game_state.ball_vy_fp == 0)
             {
-                game_state.ball_vx_fp = 0;
-                game_state.ball_vy_fp = BALL_SHOOT_SPEED_Y;
+                ar_striker_shoot_ball();
                 handled = true;
             }
         }
@@ -793,6 +593,7 @@ void scr_soccer_handle(ak_msg_t *msg)
         if (handled)
         {
             BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
+            mark_render_needed(); /* Queue render for next game tick */
         }
     }
     break;
